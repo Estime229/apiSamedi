@@ -1,0 +1,31 @@
+database:
+  type: postgres
+  host: localhost
+  port: 5432
+  username: api_user
+  password: api_password
+  database: api_db
+  synchronize: false
+  logging: true
+  entities:
+    - "dist/**/*.entity{.ts,.js}"
+
+authorisation:
+  x-api-key: HP9X6hH9n00mMVToKZxGWr12Olwczav4Pj5
+
+server:
+  port: 3001
+
+app:
+  name: "Mon App NestJS"
+  version: "1.0.0"
+
+jwt:
+  secret: "secret"
+  expireIn: "30d"
+
+file:
+ FIREBASE_CLIENT_EMAIL: firebase-adminsdk-jhxwo@reactmonkey-4a237.iam.gserviceaccount.com
+ FIREBASE_PROJECT_ID: reactmonkey-4a237
+ FIREBASE_PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+gFAN8m1o/s7S\nneGBzXwfW2GVzyn7s7NKE7F7qew3Ky28ZRnyVQ2PACv4iF29q6diyjiG6ddFAGP0\n8QgPh4akHo/0yXHSYMXD6o8CfE5vH8xnkip5k9LfDBJR0MtjxylgmGadkgNh7kVw\nxLc/uq4cKTllsYUJoEprIxVn5ja127M0R1lIDawDcpuF9s6cSaVnIistmeqyC6Is\nnYPLGCkAYhNi9AxIZIdup0OVFon9KfxT2mhXRt3V5uLY4bY1S3pw+WUU/qNXN/jm\n33Z/1dQo/1uvN2luHSkzZUcQLbUEGt5vIO0lRoZnsAwlPAeQmcwwG3ByE1iJ13IT\nvf2jbBZZAgMBAAECggEACtZRV43GSB4QxX4KTWBTcpQ3/7X+kS1Wonzu0JZo0/We\nnzRQLs9EW3F6zuNxE8BvYAkZgKFOaAQ+63kHyJxg3jbH4TjRgxKSxZOzKYTJUHyK\nXAz+Yha0/Q/affGHFIjIs5BP7CBZlWlg5WqncxZrX7o/o+eeph7KhQBEsDmyPJOm\n/0k7TQ5l0eE5ng2KJgCPcExwCqLQQcOJiOMXeF0Emp2uDl4JEcVrvWmtYyHsoXmJ\nZ0mpYfZ0c8s6IlH9jSvJM/w8lh8sSvtf8WMUcZ4YuGJb4fWfKcKNRNfNfQwphBmh\neIINM0IZdDpxIO7L5tR3GkSJczqVFUleEuTAkbGGYQKBgQD19mCQY92OvpVLtIGQ\ncWKNrhzp6YGr8eHgpnfsn1M2s8dIeDraS5Se/NUq81pZTBRXtkHpzhXdw45kcdPt\ntFUC0TbfDwF23RANM0MolWC7EwyCQ8s0JLFeg9VPqGWTH837TcD/Bei+bJjMoKbJ\nY1iMZlxs2j7tOEs4YlmKfpJt6QKBgQDGRoU5GrqEWa8eHrrE+JvFdGX/ZORkrsVL\nvApFjHNJ+aNP/HvzU7DsE/7p735xPmKtH/xj2d3evCRHbtseCDE8ZivZwLj6aOjX\nCFvSi7bWsCW++psdc3asU3GGbXQVCJAAmGL9Fl4pUz8eMI82M/V3A1RLNaL+Tgg1\nn7BTu8Tu8QKBgQCoQniCrl6lxQja9kvgJUDXTXHoLt6PYvQzu420qLXDaS7+C4mv\nRh8QuEOXk0yOY/ZSnpLuwBXDVIE3g4sIROIXAEp6Q4ir6MSPUy8xNycqMvjOsFP1\ngth3oNYvHTMHd61wqhtKGp/CjQXmjkwq3rR3r5qwuIhtvaHvm5BHpxjC6QKBgGdt\nHc1d3fFv/uMNUIuyyz7CqvoAHQtQB2asHgeNbg4mhEQTBm01ONLM02ogHargygRY\n7QUA/rVTGvGQKAiQaW6CNVmPKG6nDt4sZAl+C9ANboMiootIUZ0uocdnjOfz4XoO\nA4TViCSyYfhTiEDT9bUxLWVWA0H4XlvqgsYK6n1hAoGARsxUf/613r2kAccRLP6a\nBgmyZGr9OR+b/wYFV5pSrfXYl2FNXQzUbqdd7S3qkE16DU7cJLhkThDPwt0tZe70\nZnTKXbyynXeuC26ddVTcOmfNegYGjPLR5R7Aw3N/CTl1Mm8+fcUVMy03mNZQRPas\nExppcCIhBRdQU5l04rpz6no=\n-----END PRIVATE KEY-----"
+ FIREBASE_STORAGE_BUCKET: reactmonkey-4a237.appspot.com
