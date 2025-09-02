@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { DeletePostCommand } from '../../impl/delete-post.command/delete-post.command';
 import { DataSource } from 'typeorm';
-import { PostModel } from 'src/post/models/post.model/post.model';
+import { PostModel } from '../../../models/post.model/post.model';
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 
 @CommandHandler(DeletePostCommand)
