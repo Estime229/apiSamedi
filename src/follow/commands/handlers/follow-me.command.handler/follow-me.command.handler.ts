@@ -2,8 +2,8 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { FollowMeCommand } from '../../impl/follow-me.command/follow-me.command';
 import { DataSource } from 'typeorm';
 import { Logger, NotFoundException } from '@nestjs/common';
-import { UserModel } from 'src/auth/models/user.model/user.model';
-import { FollowModel } from 'src/follow/models/follow.model/follow.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
+import { FollowModel } from '../../../models/follow.model/follow.model';
 import { timeStamp } from 'console';
 
 @CommandHandler(FollowMeCommand)

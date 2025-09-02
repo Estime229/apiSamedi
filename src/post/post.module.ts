@@ -3,7 +3,7 @@ import { PostController } from './post.controller';
 import { ConfigModule } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import configuration from 'src/config/configuration';
+import configuration from '../config/configuration';
 import { PostModel } from './models/post.model/post.model';
 import { CreatePostCommandHandler } from './commands/handlers/create-post.command.handler/create-post.command.handler';
 import { GetAllPostHandler } from './queries/handlers/get-all-post.handler/get-all-post.handler';

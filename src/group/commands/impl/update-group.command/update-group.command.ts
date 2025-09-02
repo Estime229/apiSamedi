@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
-import { State } from 'src/group/eums/state.type';
+import { State } from '../../eums/state.type';
 
 export class UpdateGroupCommand {
   @ApiProperty({

@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllQuery } from '../../impl/get-all.query/get-all.query';
 import { DataSource } from 'typeorm';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 
 @QueryHandler(GetAllQuery)
 export class GetAllHandler implements IQueryHandler<GetAllQuery> {

@@ -6,7 +6,7 @@ import {
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { DataSource } from 'typeorm';
 import { UpdateGroupCommand } from '../../impl/update-group.command/update-group.command';
-import { GroupModel } from 'src/group/models/group.model/group.model';
+import { GroupModel } from '../../../models/group.model/group.model';
 
 @CommandHandler(UpdateGroupCommand)
 export class UpdateGroupCommandHandler

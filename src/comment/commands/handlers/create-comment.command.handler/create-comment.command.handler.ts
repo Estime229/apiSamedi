@@ -1,10 +1,10 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateCommentCommand } from '../../impl/create-comment.command/create-comment.command';
 import { DataSource } from 'typeorm';
-import { CommentModel } from 'src/comment/models/comment.model/comment.model';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { CommentModel } from '../../../models/comment.model/comment.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { NotFoundException } from '@nestjs/common';
-import { PostModel } from 'src/post/models/post.model/post.model';
+import { PostModel } from '../../../../post/models/post.model/post.model';
 
 @CommandHandler(CreateCommentCommand)
 export class CreateCommentCommandHandler

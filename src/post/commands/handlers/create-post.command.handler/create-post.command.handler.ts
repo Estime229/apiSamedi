@@ -2,8 +2,8 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreatePostCommand } from '../../impl/create-post.command/create-post.command';
 import { DataSource } from 'typeorm';
 import { Logger } from '@nestjs/common';
-import { PostModel } from 'src/post/models/post.model/post.model';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { PostModel } from '../../../models/post.model/post.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 
 @CommandHandler(CreatePostCommand)
 export class CreatePostCommandHandler

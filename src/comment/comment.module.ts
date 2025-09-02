@@ -3,7 +3,7 @@ import { CommentController } from './comment.controller';
 import { ConfigModule } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import configuration from 'src/config/configuration';
+import configuration from '../config/configuration';
 import { CommentModel } from './models/comment.model/comment.model';
 import { CreateCommentCommandHandler } from './commands/handlers/create-comment.command.handler/create-comment.command.handler';
 import { UpdateCommentCommandHandler } from './commands/handlers/update-comment.command.handler/update-comment.command.handler';

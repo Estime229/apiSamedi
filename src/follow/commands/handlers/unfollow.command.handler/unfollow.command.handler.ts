@@ -6,7 +6,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { FollowModel } from 'src/follow/models/follow.model/follow.model';
+import { FollowModel } from '../../../models/follow.model/follow.model';
 
 @CommandHandler(UnfollowCommand)
 export class UnfollowCommandHandler

@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { UpdateCommentCommand } from '../../impl/update-comment.command/update-comment.command';
 import { DataSource } from 'typeorm';
-import { CommentModel } from 'src/comment/models/comment.model/comment.model';
+import { CommentModel } from '../../../models/comment.model/comment.model';
 import { NotFoundException } from '@nestjs/common';
 
 @CommandHandler(UpdateCommentCommand)

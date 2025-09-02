@@ -2,8 +2,8 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateGroupCommand } from '../../impl/create-group.command/create-group.command';
 import { DataSource } from 'typeorm';
 import { Logger, NotFoundException } from '@nestjs/common';
-import { GroupModel } from 'src/group/models/group.model/group.model';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { GroupModel } from '../../../models/group.model/group.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 
 @CommandHandler(CreateGroupCommand)
 export class CreateGroupCommandHandler

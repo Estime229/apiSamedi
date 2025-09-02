@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllCommentQuery } from '../../impl/get-all-comment.query/get-all-comment.query';
 import { DataSource } from 'typeorm';
-import { CommentModel } from 'src/comment/models/comment.model/comment.model';
+import { CommentModel } from '../../../models/comment.model/comment.model';
 
 @QueryHandler(GetAllCommentQuery)
 export class GetAllCommentHandler implements IQueryHandler<GetAllCommentQuery> {

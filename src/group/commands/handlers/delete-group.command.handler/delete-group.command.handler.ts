@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { DeleteGroupCommand } from '../../impl/delete-group.command/delete-group.command';
 import { DataSource } from 'typeorm';
-import { GroupModel } from 'src/group/models/group.model/group.model';
+import { GroupModel } from '../../../models/group.model/group.model';
 import {
   Logger,
   NotFoundException,
