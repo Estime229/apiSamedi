@@ -12,6 +12,10 @@ const config = yaml.load(
   fs.readFileSync('./src/config/default.yml', 'utf8'),
 ) as any;
 
+// Debug pour voir la configuration chargée
+console.log('Database config:', JSON.stringify(config.database, null, 2));
+console.log('SSL config:', config.database.ssl);
+
 export const AppDataSource = new DataSource({
   type: config.database.type,
   host: config.database.host,
@@ -32,6 +36,6 @@ export const AppDataSource = new DataSource({
   migrations: ['src/migrations/*.ts'],
   migrationsRun: false,
   migrationsTableName: 'migrations',
-  // Utiliser la configuration SSL du fichier YAML
-  ssl: config.database.ssl,
+  // Forcer la configuration SSL avec une vérification
+  ssl: config.database.ssl || { require: true, rejectUnauthorized: false },
 });
