@@ -34,6 +34,12 @@ import { MemberRequestModule } from './member-request/member-request.module';
         username: configService.get('database.username'),
         password: configService.get('database.password'),
         database: configService.get('database.database'),
+        ssl: configService.get('ssl')
+          ? {
+              require: configService.get('ssl.require'),
+              rejectUnauthorized: configService.get('ssl.rejectUnauthorized'),
+            }
+          : undefined,
         entities: [
           UserModel,
           PostModel,
