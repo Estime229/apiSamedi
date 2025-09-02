@@ -7,11 +7,11 @@ import { FollowModel } from './src/follow/models/follow.model/follow.model';
 import { GroupModel } from './src/group/models/group.model/group.model';
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'api_user',
-  password: 'api_password',
-  database: 'api_db',
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT, 10),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   synchronize: false,
   logging: true,
   entities: [
