@@ -13,6 +13,11 @@ import configuration from './config/configuration';
 import { CommentModel } from './comment/models/comment.model/comment.model';
 import { LikeModule } from './like/like.module';
 import { LikeModel } from './like/models/like.model/like.model';
+import { FollowModule } from './follow/follow.module';
+import { FollowModel } from './follow/models/follow.model/follow.model';
+import { GroupModule } from './group/group.module';
+import { GroupModel } from './group/models/group.model/group.model';
+import { MemberRequestModule } from './member-request/member-request.module';
 
 @Module({
   imports: [
@@ -29,7 +34,14 @@ import { LikeModel } from './like/models/like.model/like.model';
         username: configService.get('database.username'),
         password: configService.get('database.password'),
         database: configService.get('database.database'),
-        entities: [UserModel, PostModel, CommentModel, LikeModel], // Spécifier explicitement les entités
+        entities: [
+          UserModel,
+          PostModel,
+          CommentModel,
+          LikeModel,
+          FollowModel,
+          GroupModel,
+        ], // Spécifier explicitement les entités
         synchronize: configService.get('database.synchronize'),
         logging: configService.get('database.logging'),
         migrations: ['dist/migrations/*.js'], // Configuration des migrations
@@ -43,6 +55,9 @@ import { LikeModel } from './like/models/like.model/like.model';
     PostModule,
     CommentModule,
     LikeModule,
+    FollowModule,
+    GroupModule,
+    MemberRequestModule,
   ],
   controllers: [AppController],
   providers: [AppService],

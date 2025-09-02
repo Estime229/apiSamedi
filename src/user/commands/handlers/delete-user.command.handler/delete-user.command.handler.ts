@@ -9,6 +9,12 @@ export class DeleteUserCommandHandler
 {
   constructor(private readonly dataSource: DataSource) {}
 
+  /**
+   * Delete User
+   * 1 -check user exist
+   * 2 -Remove user
+   */
+
   async execute(command: DeleteUserCommand): Promise<any> {
     const user = await this.dataSource
       .getRepository(UserModel)
