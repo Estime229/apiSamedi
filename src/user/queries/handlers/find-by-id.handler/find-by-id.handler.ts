@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { FindByIdQuery } from '../../impl/find-by-id.query/find-by-id.query';
 import { DataSource } from 'typeorm';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { NotFoundException } from '@nestjs/common';
 
 @QueryHandler(FindByIdQuery)

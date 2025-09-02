@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { DeleteUserCommand } from '../../impl/delete-user.command/delete-user.command';
 import { DataSource } from 'typeorm';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 
 @CommandHandler(DeleteUserCommand)
 export class DeleteUserCommandHandler

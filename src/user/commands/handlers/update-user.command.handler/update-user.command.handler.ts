@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { UpdateUserCommand } from '../../impl/update-user.command/update-user.command';
 import { DataSource } from 'typeorm';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
