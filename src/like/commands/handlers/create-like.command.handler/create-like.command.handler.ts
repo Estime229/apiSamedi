@@ -4,7 +4,7 @@ import { DataSource } from 'typeorm';
 import { LikeModel } from 'src/like/models/like.model/like.model';
 import { UserModel } from 'src/auth/models/user.model/user.model';
 import { Logger, NotFoundException } from '@nestjs/common';
-import { PostModel } from 'src/post/models/post.model/post.model';
+import { PostModel } from '../../../../post/models/post.model/post.model';
 
 @CommandHandler(CreateLikeCommand)
 export class CreateLikeCommandHandler

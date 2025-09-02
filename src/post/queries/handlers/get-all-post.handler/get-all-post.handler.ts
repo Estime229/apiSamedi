@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllPostQuery } from '../../impl/get-all-post.query/get-all-post.query';
 import { DataSource } from 'typeorm';
-import { PostModel } from 'src/post/models/post.model/post.model';
+import { PostModel } from '../../../../post/models/post.model/post.model';
 
 @QueryHandler(GetAllPostQuery)
 export class GetAllPostHandler implements IQueryHandler<GetAllPostQuery> {
