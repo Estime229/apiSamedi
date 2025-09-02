@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/strategie/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { CreateGroupCommand } from './commands/impl/create-group.command/create-group.command';
 import { UpdateGroupCommand } from './commands/impl/update-group.command/update-group.command';
 import { DeleteGroupCommand } from './commands/impl/delete-group.command/delete-group.command';

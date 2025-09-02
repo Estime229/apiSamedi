@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger/dist/decorators';
-import { JwtAuthGuard } from 'src/auth/strategie/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { CreateCommentCommand } from './commands/impl/create-comment.command/create-comment.command';
 import { UpdateCommentCommand } from './commands/impl/update-comment.command/update-comment.command';
 import { DeleteCommentCommand } from './commands/impl/delete-comment.command/delete-comment.command';

@@ -13,7 +13,7 @@ import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
 import { GetAllQuery } from './queries/impl/get-all.query/get-all.query';
 import { FindByIdQuery } from './queries/impl/find-by-id.query/find-by-id.query';
 import { UpdateUserCommand } from './commands/impl/update-user.command/update-user.command';
-import { JwtAuthGuard } from 'src/auth/strategie/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { DeleteUserCommand } from './commands/impl/delete-user.command/delete-user.command';
 
 @ApiBasicAuth('SECRET_KEY')

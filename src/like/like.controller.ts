@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/strategie/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { CreateLikeCommand } from './commands/impl/create-like.command/create-like.command';
 import { DeleteLikeCommand } from './commands/impl/delete-like.command/delete-like.command';
 

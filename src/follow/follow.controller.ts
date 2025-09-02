@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/strategie/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { FollowMeCommand } from './commands/impl/follow-me.command/follow-me.command';
 import { UnfollowCommand } from './commands/impl/unfollow.command/unfollow.command';
 @ApiBasicAuth('SECRET_KEY')
