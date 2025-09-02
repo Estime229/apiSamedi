@@ -12,6 +12,9 @@ const config = yaml.load(
   fs.readFileSync('./src/config/default.yml', 'utf8'),
 ) as any;
 
+// Configuration SSL conditionnelle
+const isProduction = process.env.NODE_ENV === 'production';
+
 export const AppDataSource = new DataSource({
   type: config.database.type,
   host: config.database.host,
@@ -32,5 +35,6 @@ export const AppDataSource = new DataSource({
   migrations: ['src/migrations/*.ts'],
   migrationsRun: false,
   migrationsTableName: 'migrations',
-  ssl: { require: true, rejectUnauthorized: false },
+  // SSL activé seulement en production
+  ssl: isProduction ? { require: true, rejectUnauthorized: false } : false,
 });
