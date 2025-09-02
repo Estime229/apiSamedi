@@ -15,6 +15,9 @@ database:
   entities:
     - "dist/**/*.entity{.ts,.js}"
 
+ssl:
+  rejectUnauthorized: false
+
 authorisation:
   x-api-key: HP9X6hH9n00mMVToKZxGWr12Olwczav4Pj5
 
