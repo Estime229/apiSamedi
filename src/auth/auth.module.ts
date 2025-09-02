@@ -3,7 +3,7 @@ import { AuthController } from './auth.controller';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import configuration from 'src/config/configuration';
+import configuration from '../config/configuration';
 import { CreateUserCommandHandler } from './commands/handlers/create-user.command.handler/create-user.command.handler';
 import { UserModel } from './models/user.model/user.model';
 import { JwtService } from '@nestjs/jwt';
