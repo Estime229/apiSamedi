@@ -1,8 +1,8 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateLikeCommand } from '../../impl/create-like.command/create-like.command';
 import { DataSource } from 'typeorm';
-import { LikeModel } from 'src/like/models/like.model/like.model';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { LikeModel } from '../../../models/like.model/like.model';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { Logger, NotFoundException } from '@nestjs/common';
 import { PostModel } from '../../../../post/models/post.model/post.model';
 

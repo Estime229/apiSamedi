@@ -6,7 +6,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { LikeModel } from 'src/like/models/like.model/like.model';
+import { LikeModel } from '../../../models/like.model/like.model';
 
 @CommandHandler(DeleteLikeCommand)
 export class DeleteLikeCommandHandler
