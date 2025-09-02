@@ -12,17 +12,7 @@ const config = yaml.load(
   fs.readFileSync('./src/config/default.yml', 'utf8'),
 ) as any;
 
-// Debug pour voir la configuration chargée
-console.log('Database config:', JSON.stringify(config.database, null, 2));
-console.log('SSL config:', config.database.ssl);
-
-export const AppDataSource = new DataSource({
-  type: config.database.type,
-  host: config.database.host,
-  port: config.database.port,
-  username: config.database.username,
-  password: config.database.password,
-  database: config.database.database,
+const baseConfig = {
   synchronize: config.database.synchronize,
   logging: config.database.logging,
   entities: [
@@ -36,6 +26,24 @@ export const AppDataSource = new DataSource({
   migrations: ['src/migrations/*.ts'],
   migrationsRun: false,
   migrationsTableName: 'migrations',
-  // Forcer la configuration SSL avec une vérification
-  ssl: config.database.ssl || { require: true, rejectUnauthorized: false },
-});
+};
+
+export const AppDataSource = new DataSource(
+  process.env.DATABASE_URL
+    ? {
+        type: 'postgres',
+        url: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false },
+        ...baseConfig,
+      }
+    : {
+        type: config.database.type,
+        host: config.database.host,
+        port: config.database.port,
+        username: config.database.username,
+        password: config.database.password,
+        database: config.database.database,
+        ssl: { require: true, rejectUnauthorized: false },
+        ...baseConfig,
+      },
+);
