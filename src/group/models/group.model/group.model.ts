@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { State } from '../../../group/eums/state.type';
+import { State } from '../../enums/state.type';
 
 @Entity('group')
 export class GroupModel {

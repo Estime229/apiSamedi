@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
-import { State } from '../../eums/state.type';
+import { State } from '../../../enums/state.type';
 
 export class CreateGroupCommand {
   @ApiProperty({
