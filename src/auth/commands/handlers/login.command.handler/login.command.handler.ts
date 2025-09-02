@@ -10,7 +10,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../models/user.model/user.model'; // chemin correct si la structure est src/auth/commands/handlers/login.command.handler/login.command.handler.ts
 
 @CommandHandler(LoginCommand)
 export class LoginCommandHandler implements ICommandHandler<LoginCommand> {

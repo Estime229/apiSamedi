@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { AutMeQuery } from '../../impl/aut-me.query/aut-me.query';
 import { DataSource } from 'typeorm';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../models/user.model/user.model'; // chemin correct si la structure est src/auth/queries/handlers/aut-me.handler/aut-me.handler.ts
 
 @QueryHandler(AutMeQuery)
 export class AutMeHandler implements IQueryHandler<AutMeQuery> {

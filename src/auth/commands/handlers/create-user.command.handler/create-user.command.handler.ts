@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateUserCommand } from '../../impl/create-user.command/create-user.command';
 import { DataSource } from 'typeorm';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { UserModel } from '../../../models/user.model/user.model'; // chemin correct si la structure est src/auth/commands/handlers/create-user.command.handler/create-user.command.handler.ts
 import { ConflictException, Logger } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
