@@ -6,10 +6,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { State } from '../../enums/state.type';
+import { MemberModel } from '../../../member-request/models/member.model/member.model';
 
 @Entity('group')
 export class GroupModel {
@@ -53,4 +55,7 @@ export class GroupModel {
   @ManyToOne(() => UserModel, (user) => user.groups)
   @JoinColumn()
   user: UserModel;
+
+  @OneToMany(() => MemberModel, (member) => member.group)
+  members: MemberModel[];
 }

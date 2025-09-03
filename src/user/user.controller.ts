@@ -24,6 +24,7 @@ export class UserController {
     private readonly queryBus: QueryBus,
   ) {}
 
+  //Get all users
   @ApiOperation({ summary: 'GetAll user' })
   @Get('all-user')
   async createUser(@Query() query: GetAllQuery) {

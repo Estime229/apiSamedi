@@ -27,6 +27,7 @@ async function bootstrap() {
     .setTitle('Nest Appli Samedi')
     .setDescription('Application Nest')
     .setVersion('1.0')
+    .addServer('http://localhost:5173', 'Local server')
     .addBearerAuth(
       {
         type: 'http',

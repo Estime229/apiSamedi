@@ -1,7 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "removeComments": true
+    "removeComments": true,
+    "incremental": false
   },
   "exclude": [
     "node_modules",

@@ -18,6 +18,7 @@ import { FollowModel } from './follow/models/follow.model/follow.model';
 import { GroupModule } from './group/group.module';
 import { GroupModel } from './group/models/group.model/group.model';
 import { MemberRequestModule } from './member-request/member-request.module';
+import { MemberModel } from './member-request/models/member.model/member.model';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { MemberRequestModule } from './member-request/member-request.module';
           LikeModel,
           FollowModel,
           GroupModel,
+          MemberModel,
         ], // Spécifier explicitement les entités
         synchronize: configService.get('database.synchronize'),
         logging: configService.get('database.logging'),

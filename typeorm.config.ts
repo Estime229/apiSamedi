@@ -5,6 +5,7 @@ import { CommentModel } from './src/comment/models/comment.model/comment.model';
 import { LikeModel } from './src/like/models/like.model/like.model';
 import { FollowModel } from './src/follow/models/follow.model/follow.model';
 import { GroupModel } from './src/group/models/group.model/group.model';
+import { MemberModel } from './src/member-request/models/member.model/member.model';
 import * as yaml from 'js-yaml';
 import * as fs from 'fs';
 
@@ -22,6 +23,7 @@ const baseConfig = {
     LikeModel,
     FollowModel,
     GroupModel,
+    MemberModel,
   ],
   migrations: ['src/migrations/*.ts'],
   migrationsRun: false,
@@ -43,7 +45,10 @@ export const AppDataSource = new DataSource(
         username: config.database.username,
         password: config.database.password,
         database: config.database.database,
-        ssl: { require: true, rejectUnauthorized: false },
+        ssl:
+          config.database.host === 'localhost' || config.database.host === '127.0.0.1'
+            ? false
+            : { rejectUnauthorized: (config.ssl && config.ssl.rejectUnauthorized) ?? false },
         ...baseConfig,
       },
 );

@@ -6,9 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from '../config/configuration';
 import { GroupModel } from './models/group.model/group.model';
 import { CreateGroupCommandHandler } from './commands/handlers/create-group.command.handler/create-group.command.handler';
-import { UpdateCommentCommandHandler } from '../comment/commands/handlers/update-comment.command.handler/update-comment.command.handler';
 import { UpdateGroupCommandHandler } from './commands/handlers/update-group.command.handler/update-group.command.handler';
 import { DeleteGroupCommandHandler } from './commands/handlers/delete-group.command.handler/delete-group.command.handler';
+import { GetAllHandler } from './queries/handlers/get-all.handler/get-all.handler';
 
 @Module({
   imports: [
@@ -24,6 +24,7 @@ import { DeleteGroupCommandHandler } from './commands/handlers/delete-group.comm
     CreateGroupCommandHandler,
     UpdateGroupCommandHandler,
     DeleteGroupCommandHandler,
+    GetAllHandler,
   ],
 })
 export class GroupModule {}

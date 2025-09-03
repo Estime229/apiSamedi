@@ -2,9 +2,11 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   Param,
   Patch,
   Post,
+  Query,
   Req,
   Request,
   UseGuards,
@@ -15,6 +17,7 @@ import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { CreateGroupCommand } from './commands/impl/create-group.command/create-group.command';
 import { UpdateGroupCommand } from './commands/impl/update-group.command/update-group.command';
 import { DeleteGroupCommand } from './commands/impl/delete-group.command/delete-group.command';
+import { GetAllQuery } from './queries/impl/get-all.query/get-all.query';
 
 @ApiBasicAuth('SECRET_KEY')
 @Controller('group')
@@ -24,6 +27,8 @@ export class GroupController {
     private readonly queryBus: QueryBus,
   ) {}
 
+
+  //Create Group
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Create Group' })
   @Post('create-group')
@@ -32,6 +37,7 @@ export class GroupController {
     return this.commandBus.execute(command);
   }
 
+  //Update Group
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update Group' })
   @Patch('update-group')
@@ -40,6 +46,8 @@ export class GroupController {
     return this.commandBus.execute(command);
   }
 
+
+  //Delete Group
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete Group' })
   @Delete('delete-group/:id')
@@ -48,5 +56,13 @@ export class GroupController {
     command.id = id;
     command.userId = req.user.id;
     return this.commandBus.execute(command);
+  }
+
+  //Get all groups
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Get all groups' })
+  @Get('all-groups')
+  getAllGroups(@Query() query: GetAllQuery) {
+    return this.queryBus.execute(query);
   }
 }

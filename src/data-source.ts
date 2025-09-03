@@ -5,6 +5,7 @@ import { CommentModel } from './comment/models/comment.model/comment.model';
 import { LikeModel } from './like/models/like.model/like.model';
 import { FollowModel } from './follow/models/follow.model/follow.model';
 import { GroupModel } from './group/models/group.model/group.model';
+import { MemberModel } from './member-request/models/member.model/member.model';
 import * as yaml from 'js-yaml';
 import * as fs from 'fs';
 
@@ -37,6 +38,7 @@ const AppDataSource = new DataSource(
           LikeModel,
           FollowModel,
           GroupModel,
+          MemberModel,
         ],
         migrations: ['dist/migrations/*.js'],
         migrationsRun: false,
@@ -49,11 +51,13 @@ const AppDataSource = new DataSource(
         username: config.database?.username,
         password: config.database?.password,
         database: config.database?.database,
-        ssl: config.ssl
-          ? {
-              rejectUnauthorized: config.ssl.rejectUnauthorized ?? false,
-            }
-          : undefined,
+        ssl:
+          config.database?.host === 'localhost' ||
+          config.database?.host === '127.0.0.1'
+            ? false
+            : config.ssl && config.ssl.require
+              ? { rejectUnauthorized: config.ssl.rejectUnauthorized ?? false }
+              : undefined,
         entities: [
           UserModel,
           PostModel,
@@ -61,6 +65,7 @@ const AppDataSource = new DataSource(
           LikeModel,
           FollowModel,
           GroupModel,
+          MemberModel,
         ],
         migrations: ['dist/migrations/*.js'],
         migrationsRun: false,

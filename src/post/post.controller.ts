@@ -7,11 +7,10 @@ import {
   Patch,
   Post,
   Query,
-  Req,
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { Command, CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { CreatePostCommand } from './commands/impl/create-post.command/create-post.command';

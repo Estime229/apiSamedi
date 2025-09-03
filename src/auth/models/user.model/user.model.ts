@@ -12,6 +12,7 @@ import { CommentModel } from '../../../comment/models/comment.model/comment.mode
 import { LikeModel } from '../../../like/models/like.model/like.model';
 import { FollowModel } from '../../../follow/models/follow.model/follow.model';
 import { GroupModel } from '../../../group/models/group.model/group.model';
+import { MemberModel } from '../../../member-request/models/member.model/member.model';
 
 @Entity('users')
 export class UserModel {
@@ -61,4 +62,7 @@ export class UserModel {
 
   @OneToMany(() => GroupModel, (group) => group.user)
   groups: GroupModel[];
+
+  @OneToMany(() => MemberModel, (member) => member.user)
+  members: MemberModel[];
 }

@@ -15,6 +15,7 @@ export class AutMeHandler implements IQueryHandler<AutMeQuery> {
       .leftJoinAndSelect('user.likes', 'like')
       .leftJoinAndSelect('user.following', 'follow')
       .leftJoinAndSelect('user.groups', 'group')
+      .leftJoinAndSelect('user.members', 'member')
       .getOne();
 
     return user;
