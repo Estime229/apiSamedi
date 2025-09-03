@@ -10,15 +10,7 @@ async function bootstrap() {
 
   // Configuration CORS
   app.enableCors({
-    origin: [
-      'http://localhost:8080',
-      'http://localhost:5173',
-      'https://apisamedi.onrender.com',
-      /[^.\s]+\.surge\.sh/,
-      'http://192.168.100.62:8080',
-      'http://192.168.100.51:8080',
-      /[^.\s]+\.vercel\.app/,
-    ],
+    origin: true,
     credentials: true,
   });
 
@@ -27,7 +19,6 @@ async function bootstrap() {
     .setTitle('Nest Appli Samedi')
     .setDescription('Application Nest')
     .setVersion('1.0')
-    .addServer('http://localhost:5173', 'Local server')
     .addBearerAuth(
       {
         type: 'http',

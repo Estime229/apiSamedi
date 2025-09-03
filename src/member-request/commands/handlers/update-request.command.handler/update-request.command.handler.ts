@@ -6,7 +6,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { MemberModel } from 'src/member-request/models/member.model/member.model';
+import { MemberModel } from '../../../models/member.model/member.model';
 
 @CommandHandler(UpdateRequestCommand)
 export class UpdateRequestCommandHandler

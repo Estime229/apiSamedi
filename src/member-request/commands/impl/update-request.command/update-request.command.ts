@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty } from 'class-validator';
-import { RequestState } from 'src/member-request/enums/requestState.type';
+import { RequestState } from '../../../enums/requestState.type';
 
 export class UpdateRequestCommand {
   @ApiProperty({

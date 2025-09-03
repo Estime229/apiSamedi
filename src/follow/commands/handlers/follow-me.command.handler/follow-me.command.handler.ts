@@ -4,7 +4,6 @@ import { DataSource } from 'typeorm';
 import { Logger, NotFoundException } from '@nestjs/common';
 import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { FollowModel } from '../../../models/follow.model/follow.model';
-import { timeStamp } from 'console';
 
 @CommandHandler(FollowMeCommand)
 export class FollowMeCommandHandler

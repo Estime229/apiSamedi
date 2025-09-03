@@ -2,10 +2,10 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateRequestCommand } from '../../impl/create-request.command/create-request.command';
 import { DataSource } from 'typeorm';
 import { Logger, NotFoundException } from '@nestjs/common';
-import { MemberModel } from 'src/member-request/models/member.model/member.model';
-import { GroupModel } from 'src/group/models/group.model/group.model';
-import { RequestState } from 'src/member-request/enums/requestState.type';
-import { UserModel } from 'src/auth/models/user.model/user.model';
+import { MemberModel } from '../../../models/member.model/member.model';
+import { GroupModel } from '../../../../group/models/group.model/group.model';
+import { RequestState } from '../../../enums/requestState.type';
+import { UserModel } from '../../../../auth/models/user.model/user.model';
 
 @CommandHandler(CreateRequestCommand)
 export class CreateRequestCommandHandler
