@@ -2,6 +2,15 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as admin from 'firebase-admin';
 
+interface MulterFile {
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  mimetype: string;
+  size: number;
+  buffer: Buffer;
+}
+
 @Injectable()
 export class FileService implements OnModuleInit {
   private storage: admin.storage.Storage;
@@ -37,7 +46,7 @@ export class FileService implements OnModuleInit {
     }
   }
 
-  async uploadFile(file: Express.Multer.File): Promise<string> {
+  async uploadFile(file: MulterFile): Promise<string> {
     try {
       const bucket = this.storage.bucket();
       const fileName = `uploads/${Date.now()}_${file.originalname}`;
