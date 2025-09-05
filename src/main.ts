@@ -9,13 +9,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Configuration CORS
+  // Configuration CORS
   app.enableCors({
-    origin: [
-      'http://localhost:8080',
-       'http://localhost:5173',
-      /[^.\s]+\.surge\.sh/,
-      'https://apisamedi.onrender.com'
-    ],
+    origin: true,
     credentials: true,
   });
 
