@@ -2,7 +2,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { FindUserByGroupCommand } from '../../impl/find-user-by-group.command/find-user-by-group.command';
 import { DataSource } from 'typeorm';
 import { Logger, NotFoundException } from '@nestjs/common';
-import { GroupModel } from 'src/group/models/group.model/group.model';
+import { GroupModel } from '../../../models/group.model/group.model';
 
 @CommandHandler(FindUserByGroupCommand)
 export class FindUserByGroupCommandHandler
