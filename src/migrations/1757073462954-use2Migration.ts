@@ -5,11 +5,11 @@ export class Use2Migration1757073462954 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "user" ADD "userUrl" character varying`,
+      `ALTER TABLE "users" ADD "userUrl" character varying`,
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`ALTER TABLE "user" DROP COLUMN "userUrl"`);
+    await queryRunner.query(`ALTER TABLE "users" DROP COLUMN "userUrl"`);
   }
 }

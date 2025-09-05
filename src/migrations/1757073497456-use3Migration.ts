@@ -5,11 +5,11 @@ export class Use3Migration1757073497456 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "post" ADD "postUrl" character varying`,
+      `ALTER TABLE "posts" ADD "postUrl" character varying`,
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`ALTER TABLE "post" DROP COLUMN "postUrl"`);
+    await queryRunner.query(`ALTER TABLE "posts" DROP COLUMN "postUrl"`);
   }
 }
