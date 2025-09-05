@@ -39,8 +39,15 @@ export class UserModel {
 
   @Column({
     nullable: true,
+    unique: false,
   })
   userUrl: string;
+
+  @Column({
+    nullable: true,
+    default: false,
+  })
+  isAct: boolean;
 
   @CreateDateColumn()
   @Expose()
