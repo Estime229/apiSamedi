@@ -44,6 +44,7 @@ export class UpdateGroupCommandHandler
       group.groupName = command.groupName;
       group.groupState = command.states;
       group.groupCategory = command.groupCategory;
+      group.groupUrl = command.groupUrl;
 
       //save group
       const savedGroup = await this.dataSource

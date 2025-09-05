@@ -4,6 +4,7 @@ import { DataSource } from 'typeorm';
 import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import e from 'express';
 
 @CommandHandler(UpdateUserCommand)
 export class UpdateUserCommandHandler
@@ -38,6 +39,7 @@ export class UpdateUserCommandHandler
     // Update  User Properties
     existingUser.username = username;
     existingUser.password = hashedPassword;
+    existingUser.userUrl = command.userUrl;
 
     // Saves the changes
     await this.dataSource.getRepository(UserModel).save(existingUser);

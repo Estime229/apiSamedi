@@ -16,6 +16,7 @@ export class CreateUserCommand {
   })
   @IsNotEmpty()
   password: string;
+
   @ApiProperty({
     description: 'You email',
     format: 'string',
@@ -23,4 +24,12 @@ export class CreateUserCommand {
   })
   @IsNotEmpty()
   username: string;
+
+  @ApiProperty({
+    description: 'You userUrl',
+    format: 'string',
+    example: 'https://example.com/my-first-post',
+  })
+  @IsNotEmpty()
+  userUrl: string;
 }

@@ -19,6 +19,14 @@ export class UpdatePostCommand {
   body: string;
 
   @ApiProperty({
+    description: 'You postUrl',
+    format: 'string',
+    example: 'https://example.com/my-first-post',
+  })
+  @IsNotEmpty()
+  postUrl: string;
+
+  @ApiProperty({
     description: 'You postId',
     format: 'string',
     example: 'gjhgjkjhhjwd-wdwjdkgjwhd-wdnbm',

@@ -31,6 +31,7 @@ export class CreatePostCommandHandler
       post = new PostModel();
       post.title = command.title;
       post.body = command.body;
+      post.postUrl = command.postUrl;
 
       //   check if userId exist
       const user = await this.dataSource.getRepository(UserModel).findOne({

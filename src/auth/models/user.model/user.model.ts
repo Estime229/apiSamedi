@@ -37,6 +37,11 @@ export class UserModel {
   })
   password: string;
 
+  @Column({
+    nullable: true,
+  })
+  userUrl: string;
+
   @CreateDateColumn()
   @Expose()
   created_at: Date;

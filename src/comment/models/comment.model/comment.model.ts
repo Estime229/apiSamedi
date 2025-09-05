@@ -18,7 +18,6 @@ export class CommentModel {
 
   @Column({
     nullable: false,
-    unique: true,
   })
   content: string;
 

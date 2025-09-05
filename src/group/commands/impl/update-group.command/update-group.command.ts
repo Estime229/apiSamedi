@@ -24,7 +24,7 @@ export class UpdateGroupCommand {
     format: 'string',
     example: 'Tics Mood',
   })
-  @IsOptional()
+  @IsNotEmpty()
   groupCategory: string;
 
   // Group state
@@ -45,6 +45,14 @@ export class UpdateGroupCommand {
   })
   @IsNotEmpty()
   id: string;
+
+  @ApiProperty({
+    description: 'You groupUrl',
+    format: 'string',
+    example: 'https://example.com/my-first-post',
+  })
+  @IsNotEmpty()
+  groupUrl: string;
 
   userId: string;
 }

@@ -19,6 +19,7 @@ import { GroupModule } from './group/group.module';
 import { GroupModel } from './group/models/group.model/group.model';
 import { MemberRequestModule } from './member-request/member-request.module';
 import { MemberModel } from './member-request/models/member.model/member.model';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -69,6 +70,7 @@ import { MemberModel } from './member-request/models/member.model/member.model';
     FollowModule,
     GroupModule,
     MemberRequestModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

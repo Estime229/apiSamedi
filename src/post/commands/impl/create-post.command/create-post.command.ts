@@ -18,19 +18,13 @@ export class CreatePostCommand {
   @IsNotEmpty()
   body: string;
 
-  //   @ApiProperty({
-  //     description: 'You postUrl',
-  //     format: 'string',
-  //     example: 'https://example.com/my-first-post',
-  //   })
-  //   @IsNotEmpty()
-  //   postUrl: string;
-
   @ApiProperty({
-    description: 'You userId',
+    description: 'You postUrl',
     format: 'string',
-    example: '1',
+    example: 'https://example.com/my-first-post',
   })
   @IsNotEmpty()
+  postUrl: string;
+
   userId: string;
 }

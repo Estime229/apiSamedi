@@ -36,6 +36,7 @@ export class CreateUserCommandHandler
       user.username = command.username;
       user.email = command.email;
       user.password = hashedPassword;
+      user.userUrl = command.userUrl;
 
       // Sauvegarde de l'utilisateur
       const savedUser = await this.dataSource

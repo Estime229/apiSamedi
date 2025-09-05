@@ -31,6 +31,8 @@ export class CreateGroupCommandHandler
       group.groupName = command.groupName;
       group.groupDesc = command.groupDesc;
       group.groupState = command.states;
+      group.groupUrl = command.groupUrl;
+      group.groupCategory = command.groupCategory;
 
       const user = await this.dataSource
         .getRepository(UserModel)

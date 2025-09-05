@@ -9,6 +9,7 @@ import { CreateGroupCommandHandler } from './commands/handlers/create-group.comm
 import { UpdateGroupCommandHandler } from './commands/handlers/update-group.command.handler/update-group.command.handler';
 import { DeleteGroupCommandHandler } from './commands/handlers/delete-group.command.handler/delete-group.command.handler';
 import { GetAllHandler } from './queries/handlers/get-all.handler/get-all.handler';
+import { FindUserByGroupCommandHandler } from './commands/handlers/find-user-by-group.command.handler/find-user-by-group.command.handler';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { GetAllHandler } from './queries/handlers/get-all.handler/get-all.handle
     UpdateGroupCommandHandler,
     DeleteGroupCommandHandler,
     GetAllHandler,
+    FindUserByGroupCommandHandler,
   ],
 })
 export class GroupModule {}

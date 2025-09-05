@@ -27,12 +27,11 @@ export class MemberModel {
 
   @Column({
     nullable: true,
-    unique: true,
   })
   message: string;
 
   @Column({
-    nullable: true,
+    nullable: false,
     type: 'enum',
     enum: RequestState,
     array: true,

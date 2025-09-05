@@ -20,13 +20,11 @@ export class PostModel {
 
   @Column({
     nullable: false,
-    unique: true,
   })
   title: string;
 
   @Column({
     nullable: false,
-    unique: true,
   })
   body: string;
 

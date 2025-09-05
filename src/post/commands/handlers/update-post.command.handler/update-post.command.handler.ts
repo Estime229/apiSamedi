@@ -45,6 +45,7 @@ export class UpdatePostCommandHandler
     // Update post properties
     post.title = title;
     post.body = body;
+    post.postUrl = command.postUrl;
 
     // Save updated post
     await this.dataSource.getRepository(PostModel).save(post);

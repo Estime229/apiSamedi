@@ -19,30 +19,32 @@ export class GroupModel {
   id: string;
 
   @Column({
-    nullable: true,
-    unique: true,
+    nullable: false,
   })
   groupName: string;
 
   @Column({
-    nullable: true,
-    unique: true,
+    nullable: false,
   })
   groupDesc: string;
 
   @Column({
     nullable: true,
-    unique: true,
   })
   groupCategory: string;
 
   @Column({
-    nullable: true,
+    nullable: false,
     type: 'enum',
     enum: State,
     array: true,
   })
   groupState: State[];
+
+  @Column({
+    nullable: true,
+  })
+  groupUrl: string;
 
   @CreateDateColumn()
   @Expose()

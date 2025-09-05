@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   Query,
   Request,
@@ -51,9 +52,10 @@ export class UserController {
   //Delete user
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete user' })
-  @Delete('delete')
-  async deleteUser(@Body() command: DeleteUserCommand, @Request() req) {
-    command.id = req.user.id;
+  @Delete('delete/:id')
+  async deleteUser(@Param('id') id: string) {
+    const command = new DeleteUserCommand();
+    command.id = id;
     return this.commandBus.execute(command);
   }
 }

@@ -18,6 +18,7 @@ import { CreateGroupCommand } from './commands/impl/create-group.command/create-
 import { UpdateGroupCommand } from './commands/impl/update-group.command/update-group.command';
 import { DeleteGroupCommand } from './commands/impl/delete-group.command/delete-group.command';
 import { GetAllQuery } from './queries/impl/get-all.query/get-all.query';
+import { FindUserByGroupCommand } from './commands/impl/find-user-by-group.command/find-user-by-group.command';
 
 @ApiBasicAuth('SECRET_KEY')
 @Controller('group')
@@ -26,7 +27,6 @@ export class GroupController {
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
   ) {}
-
 
   //Create Group
   @UseGuards(JwtAuthGuard)
@@ -46,7 +46,6 @@ export class GroupController {
     return this.commandBus.execute(command);
   }
 
-
   //Delete Group
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete Group' })
@@ -64,5 +63,15 @@ export class GroupController {
   @Get('all-groups')
   getAllGroups(@Query() query: GetAllQuery) {
     return this.queryBus.execute(query);
+  }
+
+  //Find User by group
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Find User by group' })
+  @Post('all-user/:id')
+  getUser(@Param('id') id: string) {
+    const command = new FindUserByGroupCommand();
+    command.groupId = id;
+    return this.commandBus.execute(command);
   }
 }

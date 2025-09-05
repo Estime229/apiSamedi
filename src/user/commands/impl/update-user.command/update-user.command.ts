@@ -18,5 +18,13 @@ export class UpdateUserCommand {
   @IsNotEmpty()
   username: string;
 
+  @ApiProperty({
+    description: 'You userUrl',
+    format: 'string',
+    example: 'https://example.com/my-first-post',
+  })
+  @IsNotEmpty()
+  userUrl: string;
+
   id: string;
 }

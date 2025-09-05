@@ -23,14 +23,28 @@ export class CreateRequestCommandHandler
 
   async execute(command: CreateRequestCommand): Promise<any> {
     try {
-      let request = await this.dataSource
-        .createQueryBuilder(MemberModel, 'member')
-        .getOne();
+      // Vérifier si une demande existe déjà pour ce user/groupe
+      let existingRequest = await this.dataSource
+        .getRepository(MemberModel)
+        .findOne({
+          where: {
+            user: { id: command.userId },
+            group: { id: command.groupId },
+          },
+        });
 
-      request = new MemberModel();
-      request.message = command.message;
+      if (existingRequest) {
+        return {
+          data: existingRequest,
+          message:
+            'Une demande existe déjà pour cet utilisateur dans ce groupe.',
+        };
+      }
+
+      existingRequest = new MemberModel();
+      existingRequest.message = command.message;
       // change requestState to waiting
-      request.requestState = [RequestState.WAITING];
+      existingRequest.requestState = [RequestState.WAITING];
 
       //check if group exist
       const group = await this.dataSource
@@ -41,19 +55,19 @@ export class CreateRequestCommandHandler
         throw new NotFoundException('group not found');
       }
 
-      request.group = group;
+      existingRequest.group = group;
 
       //check user
       const user = await this.dataSource
         .getRepository(UserModel)
         .findOne({ where: { id: command.userId } });
 
-      request.user = user;
+      existingRequest.user = user;
 
       //save Request
       const saveRequest = await this.dataSource
         .getRepository(MemberModel)
-        .save(request);
+        .save(existingRequest);
 
       return {
         data: saveRequest,
