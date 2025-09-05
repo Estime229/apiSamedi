@@ -43,11 +43,11 @@ export class UserModel {
   })
   userUrl: string;
 
-  @Column({
-    nullable: true,
-    default: false,
-  })
-  isAct: boolean;
+  // @Column({
+  //   nullable: true,
+  //   default: false,
+  // })
+  // isAct: boolean;
 
   @CreateDateColumn()
   @Expose()
