@@ -7,7 +7,7 @@ export class UpdateUserCommand {
     format: 'string',
     example: 'xxxxxx@gmail.com',
   })
-  @IsNotEmpty()
+  @IsOptional()
   password: string;
 
   @ApiProperty({
@@ -15,7 +15,7 @@ export class UpdateUserCommand {
     format: 'string',
     example: 'xxxxxx@gmail.com',
   })
-  @IsNotEmpty()
+  @IsOptional()
   username: string;
 
   @ApiProperty({
