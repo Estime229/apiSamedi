@@ -51,7 +51,7 @@ export class UpdateGroupCommand {
     format: 'string',
     example: 'https://example.com/my-first-post',
   })
-  @IsNotEmpty()
+  @IsOptional()
   groupUrl: string;
 
   userId: string;

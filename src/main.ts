@@ -11,7 +11,12 @@ async function bootstrap() {
   // Configuration CORS
   // Configuration CORS
   app.enableCors({
-    origin: true,
+    origin: [
+      'http://localhost:8080',
+      'http://localhost:5173',
+      /[^.\s]+\.surge\.sh/,
+      'https://apisamedi.onrender.com',
+    ],
     credentials: true,
   });
 

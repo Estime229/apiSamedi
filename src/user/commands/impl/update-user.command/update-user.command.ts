@@ -22,9 +22,10 @@ export class UpdateUserCommand {
     description: 'You userUrl',
     format: 'string',
     example: 'https://example.com/my-first-post',
+    required: false,
+    nullable: true,
   })
-  @IsNotEmpty()
-  userUrl: string;
+  userUrl?: string;
 
   id: string;
 }

@@ -46,9 +46,13 @@ export const AppDataSource = new DataSource(
         password: config.database.password,
         database: config.database.database,
         ssl:
-          config.database.host === 'localhost' || config.database.host === '127.0.0.1'
+          config.database.host === 'localhost' ||
+          config.database.host === '127.0.0.1'
             ? false
-            : { rejectUnauthorized: (config.ssl && config.ssl.rejectUnauthorized) ?? false },
+            : {
+                rejectUnauthorized:
+                  (config.ssl && config.ssl.rejectUnauthorized) ?? false,
+              },
         ...baseConfig,
       },
 );

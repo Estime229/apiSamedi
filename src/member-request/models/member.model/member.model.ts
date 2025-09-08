@@ -38,11 +38,15 @@ export class MemberModel {
   })
   requestState: RequestState[];
 
-  @ManyToOne(() => UserModel, (user) => user.members)
+  @ManyToOne(() => UserModel, (user) => user.members, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   user: UserModel;
 
-  @ManyToOne(() => GroupModel, (group) => group.members)
+  @ManyToOne(() => GroupModel, (group) => group.members, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   group: GroupModel;
 }

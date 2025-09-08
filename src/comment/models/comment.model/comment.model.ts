@@ -29,11 +29,15 @@ export class CommentModel {
   @Expose()
   updated_at: Date;
 
-  @ManyToOne(() => UserModel, (user) => user.comments)
+  @ManyToOne(() => UserModel, (user) => user.comments, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   user: UserModel;
 
-  @ManyToOne(() => PostModel, (post) => post.comments)
+  @ManyToOne(() => PostModel, (post) => post.comments, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   post: PostModel;
 }

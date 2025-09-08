@@ -21,11 +21,15 @@ export class FollowModel {
   })
   isFollow: boolean;
 
-  @ManyToOne(() => UserModel, (user) => user.following)
+  @ManyToOne(() => UserModel, (user) => user.following, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'followerId' })
   follower: UserModel;
 
-  @ManyToOne(() => UserModel, (user) => user.followers)
+  @ManyToOne(() => UserModel, (user) => user.followers, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'followedId' })
   followed: UserModel;
 

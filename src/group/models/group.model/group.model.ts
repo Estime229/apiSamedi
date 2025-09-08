@@ -54,10 +54,14 @@ export class GroupModel {
   @Expose()
   updated_at: Date;
 
-  @ManyToOne(() => UserModel, (user) => user.groups)
+  @ManyToOne(() => UserModel, (user) => user.groups, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   user: UserModel;
 
-  @OneToMany(() => MemberModel, (member) => member.group)
+  @OneToMany(() => MemberModel, (member) => member.group, {
+    onDelete: 'CASCADE',
+  })
   members: MemberModel[];
 }

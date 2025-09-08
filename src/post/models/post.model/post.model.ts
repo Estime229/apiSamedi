@@ -41,13 +41,15 @@ export class PostModel {
   @Expose()
   updated_at: Date;
 
-  @ManyToOne(() => UserModel, (user) => user.posts)
+  @ManyToOne(() => UserModel, (user) => user.posts, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: UserModel;
 
-  @OneToMany(() => CommentModel, (comment) => comment.post)
+  @OneToMany(() => CommentModel, (comment) => comment.post, {
+    onDelete: 'CASCADE',
+  })
   comments: CommentModel[];
 
-  @OneToMany(() => LikeModel, (like) => like.post)
+  @OneToMany(() => LikeModel, (like) => like.post, { onDelete: 'CASCADE' })
   likes: LikeModel[];
 }

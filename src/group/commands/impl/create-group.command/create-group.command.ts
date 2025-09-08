@@ -51,6 +51,6 @@ export class CreateGroupCommand {
     format: 'string',
     example: 'https://example.com/my-first-post',
   })
-  @IsNotEmpty()
+  @IsOptional()
   groupUrl: string;
 }

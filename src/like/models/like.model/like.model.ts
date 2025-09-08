@@ -22,11 +22,11 @@ export class LikeModel {
   })
   isLiked: boolean;
 
-  @ManyToOne(() => UserModel, (user) => user.likes)
+  @ManyToOne(() => UserModel, (user) => user.likes, { onDelete: 'CASCADE' })
   @JoinColumn()
   user: UserModel;
 
-  @ManyToOne(() => PostModel, (post) => post.likes)
+  @ManyToOne(() => PostModel, (post) => post.likes, { onDelete: 'CASCADE' })
   @JoinColumn()
   post: PostModel;
 

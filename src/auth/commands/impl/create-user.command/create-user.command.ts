@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateUserCommand {
   @ApiProperty({
@@ -9,6 +9,7 @@ export class CreateUserCommand {
   })
   @IsNotEmpty()
   email: string;
+
   @ApiProperty({
     description: 'You email',
     format: 'string',
@@ -30,6 +31,6 @@ export class CreateUserCommand {
     format: 'string',
     example: 'https://example.com/my-first-post',
   })
-  @IsNotEmpty()
+  @IsOptional()
   userUrl: string;
 }

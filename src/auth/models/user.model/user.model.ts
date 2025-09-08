@@ -27,7 +27,7 @@ export class UserModel {
 
   @Column({
     nullable: true,
-    unique: true,
+    unique: false,
   })
   username: string;
 
@@ -57,24 +57,32 @@ export class UserModel {
   @Expose()
   updated_at: Date;
 
-  @OneToMany(() => PostModel, (post) => post.user)
+  @OneToMany(() => PostModel, (post) => post.user, { onDelete: 'CASCADE' })
   posts: PostModel[];
 
-  @OneToMany(() => LikeModel, (like) => like.user)
+  @OneToMany(() => LikeModel, (like) => like.user, { onDelete: 'CASCADE' })
   likes: LikeModel[];
 
-  @OneToMany(() => CommentModel, (comment) => comment.user)
+  @OneToMany(() => CommentModel, (comment) => comment.user, {
+    onDelete: 'CASCADE',
+  })
   comments: CommentModel[];
 
-  @OneToMany(() => FollowModel, (follow) => follow.follower)
+  @OneToMany(() => FollowModel, (follow) => follow.follower, {
+    onDelete: 'CASCADE',
+  })
   following: FollowModel[];
 
-  @OneToMany(() => FollowModel, (follow) => follow.followed)
+  @OneToMany(() => FollowModel, (follow) => follow.followed, {
+    onDelete: 'CASCADE',
+  })
   followers: FollowModel[];
 
-  @OneToMany(() => GroupModel, (group) => group.user)
+  @OneToMany(() => GroupModel, (group) => group.user, { onDelete: 'CASCADE' })
   groups: GroupModel[];
 
-  @OneToMany(() => MemberModel, (member) => member.user)
+  @OneToMany(() => MemberModel, (member) => member.user, {
+    onDelete: 'CASCADE',
+  })
   members: MemberModel[];
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class UpdatePostCommand {
   @ApiProperty({
@@ -23,7 +23,7 @@ export class UpdatePostCommand {
     format: 'string',
     example: 'https://example.com/my-first-post',
   })
-  @IsNotEmpty()
+  @IsOptional()
   postUrl: string;
 
   @ApiProperty({
