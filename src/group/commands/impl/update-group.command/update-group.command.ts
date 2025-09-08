@@ -24,7 +24,7 @@ export class UpdateGroupCommand {
     format: 'string',
     example: 'Tics Mood',
   })
-  @IsNotEmpty()
+  @IsOptional()
   groupCategory: string;
 
   // Group state

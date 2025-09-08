@@ -20,6 +20,7 @@ import { GroupModel } from './group/models/group.model/group.model';
 import { MemberRequestModule } from './member-request/member-request.module';
 import { MemberModel } from './member-request/models/member.model/member.model';
 import { FileModule } from './file/file.module';
+import { GeneratorModule } from './generator/generator.module';
 
 @Module({
   imports: [
@@ -71,6 +72,7 @@ import { FileModule } from './file/file.module';
     GroupModule,
     MemberRequestModule,
     FileModule,
+    GeneratorModule,
   ],
   controllers: [AppController],
   providers: [AppService],
