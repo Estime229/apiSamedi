@@ -8,6 +8,7 @@ import {
   Query,
   Request,
   UseGuards,
+  Patch
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
@@ -42,7 +43,7 @@ export class UserController {
   //Update user
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update user' })
-  @Post('update')
+  @Patch('update')
   async updateUser(@Body() command: UpdateUserCommand, @Request() req) {
     command.id = req.user.id;
     // console.log('User ID from request:', req.user.id);
