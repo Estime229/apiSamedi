@@ -4,8 +4,8 @@ import { DataSource } from 'typeorm';
 import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import e from 'express';
 
+@CommandHandler(UpdateUserCommand)
 @CommandHandler(UpdateUserCommand)
 export class UpdateUserCommandHandler
   implements ICommandHandler<UpdateUserCommand>
@@ -20,7 +20,7 @@ export class UpdateUserCommandHandler
    */
 
   async execute(command: UpdateUserCommand): Promise<any> {
-    const { username, password } = command;
+    const { username, password, userUrl } = command;
 
     const existingUser = await this.dataSource
       .createQueryBuilder(UserModel, 'user')
@@ -32,20 +32,23 @@ export class UpdateUserCommandHandler
       throw new NotFoundException('User not found');
     }
 
-    // Hashage du mot de passe
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
+    // Mise à jour conditionnelle des propriétés
+    if (username !== undefined) {
+      existingUser.username = username;
+    }
+    if (password !== undefined && password !== null && password !== '') {
+      const salt = await bcrypt.genSalt();
+      existingUser.password = await bcrypt.hash(password, salt);
+    }
+    if (userUrl !== undefined) {
+      existingUser.userUrl = userUrl;
+    }
 
-    // Update  User Properties
-    existingUser.username = username;
-    existingUser.password = hashedPassword;
-    existingUser.userUrl = command.userUrl;
-
-    // Saves the changes
+    // Sauvegarde des modifications
     await this.dataSource.getRepository(UserModel).save(existingUser);
-    // const { password, ...safeUser } = user;
-
-    const safeUser = (({ password, ...user }) => user)(existingUser);
+    // Retirer le champ password de la réponse
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _removed, ...safeUser } = existingUser;
     return {
       data: safeUser,
       message: 'User updated successfully',
