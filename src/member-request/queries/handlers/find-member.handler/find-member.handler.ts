@@ -2,7 +2,7 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { FindMemberQuery } from '../../impl/find-member.query/find-member.query';
 import { DataSource } from 'typeorm';
 import { Logger, NotFoundException } from '@nestjs/common';
-import { MemberModel } from 'src/member-request/models/member.model/member.model';
+import { MemberModel } from '../../../models/member.model/member.model';
 
 @QueryHandler(FindMemberQuery)
 export class FindMemberHandler implements IQueryHandler<FindMemberQuery> {
