@@ -19,6 +19,9 @@ export class GetAllHandler implements IQueryHandler<GetAllQuery> {
     const users = this.dataSource
       .createQueryBuilder(UserModel, 'user')
       .orderBy('user.created_at', 'DESC')
+      .leftJoinAndSelect('user.groups', 'group')
+      .leftJoinAndSelect('user.followers', 'followers')
+      .leftJoinAndSelect('user.members', 'members')
       .select();
 
     // Add search

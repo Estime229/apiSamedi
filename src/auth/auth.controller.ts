@@ -12,6 +12,7 @@ import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
 import { CreateUserCommand } from './commands/impl/create-user.command/create-user.command';
 import { LoginCommand } from './commands/impl/login.command/login.command';
 import { JwtAuthGuard } from './strategie/jwt-auth.guard';
+import { ApiKeyGuard } from './strategie/api-key.guard';
 import { AutMeQuery } from './queries/impl/aut-me.query/aut-me.query';
 
 @ApiBasicAuth('SECRET_KEY')
@@ -23,12 +24,16 @@ export class AuthController {
   ) {}
 
   // @UseGuards(JwtAuthGuard)
+  @UseGuards(ApiKeyGuard)
+  @ApiBasicAuth('x-api-key')
   @ApiOperation({ summary: 'Create user' })
   @Post('register')
   async createUser(@Body() body: CreateUserCommand) {
     return this.commandBus.execute(body);
   }
 
+  @UseGuards(ApiKeyGuard)
+  @ApiBasicAuth('x-api-key')
   @ApiOperation({ summary: 'login user' })
   @Post('login')
   async login(@Body() body: LoginCommand) {

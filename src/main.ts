@@ -1,14 +1,17 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as bodyParser from 'body-parser';
 import './polyfill';
+// import { ApiKeyGuard } from './auth/strategie/api-key.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // const reflector = app.get(Reflector);
 
-  // Configuration CORS
+  // app.useGlobalGuards(new ApiKeyGuard(reflector));
+
   // Configuration CORS
   app.enableCors({
     origin: [
@@ -25,6 +28,14 @@ async function bootstrap() {
     .setTitle('Nest Appli Samedi')
     .setDescription('Application Nest')
     .setVersion('1.0')
+    .addApiKey(
+      {
+        type: 'apiKey',
+        name: 'x-api-key',
+        in: 'header',
+      },
+      'x-api-key',
+    )
     .addBearerAuth(
       {
         type: 'http',
@@ -36,14 +47,6 @@ async function bootstrap() {
       },
       'SECRET_KEY',
     )
-    // .addApiKey(
-    //   {
-    //     type: 'apiKey',
-    //     name: 'x-api-key',
-    //     in: 'header',
-    //   },
-    //   'x-api-key',
-    // )
     .build();
 
   // Configurer la limite de taille pour les uploads

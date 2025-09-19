@@ -19,12 +19,12 @@ export class PostModel {
   id: string;
 
   @Column({
-    nullable: false,
+    nullable: true,
   })
   title: string;
 
   @Column({
-    nullable: false,
+    nullable: true,
   })
   body: string;
 

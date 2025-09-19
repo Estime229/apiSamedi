@@ -7,7 +7,7 @@ export class CreatePostCommand {
     format: 'string',
     example: 'my first post',
   })
-  @IsNotEmpty()
+  @IsOptional()
   title: string;
 
   @ApiProperty({
@@ -15,7 +15,7 @@ export class CreatePostCommand {
     format: 'string',
     example: 'this is my first body',
   })
-  @IsNotEmpty()
+  @IsOptional()
   body: string;
 
   @ApiProperty({

@@ -8,6 +8,7 @@ import { MemberModel } from './models/member.model/member.model';
 import { CreateRequestCommandHandler } from './commands/handlers/create-request.command.handler/create-request.command.handler';
 import { UpdateRequestCommandHandler } from './commands/handlers/update-request.command.handler/update-request.command.handler';
 import { DeleteRequestCommandHandler } from './commands/handlers/delete-request.command.handler/delete-request.command.handler';
+import { FindMemberHandler } from './queries/handlers/find-member.handler/find-member.handler';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { DeleteRequestCommandHandler } from './commands/handlers/delete-request.
     CreateRequestCommandHandler,
     UpdateRequestCommandHandler,
     DeleteRequestCommandHandler,
+    FindMemberHandler,
   ],
 })
 export class MemberRequestModule {}

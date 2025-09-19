@@ -7,7 +7,7 @@ export class UpdatePostCommand {
     format: 'string',
     example: 'my first post',
   })
-  @IsNotEmpty()
+  @IsOptional()
   title: string;
 
   @ApiProperty({
@@ -15,7 +15,7 @@ export class UpdatePostCommand {
     format: 'string',
     example: 'this is my first body',
   })
-  @IsNotEmpty()
+  @IsOptional()
   body: string;
 
   @ApiProperty({
@@ -29,7 +29,7 @@ export class UpdatePostCommand {
   @ApiProperty({
     description: 'You postId',
     format: 'string',
-    example: 'gjhgjkjhhjwd-wdwjdkgjwhd-wdnbm',
+    example: '83d355b5-3738-4b3f-a4ad-490a96cdd3ea',
   })
   @IsNotEmpty()
   postId: string;

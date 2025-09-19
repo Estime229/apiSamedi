@@ -5,20 +5,25 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBasicAuth, ApiOperation } from '@nestjs/swagger';
 import { CreateRequestCommand } from './commands/impl/create-request.command/create-request.command';
 import { JwtAuthGuard } from '../auth/strategie/jwt-auth.guard';
 import { UpdateRequestCommand } from './commands/impl/update-request.command/update-request.command';
 import { DeleteRequestCommand } from './commands/impl/delete-request.command/delete-request.command';
+import { FindMemberQuery } from './queries/impl/find-member.query/find-member.query';
 
 @ApiBasicAuth('SECRET_KEY')
 @Controller('member-request')
 export class MemberRequestController {
-  constructor(private readonly commandBus: CommandBus) {}
+  constructor(
+    private readonly commandBus: CommandBus,
+    private readonly queryBus: QueryBus,
+  ) {}
 
   //Create Request
   @UseGuards(JwtAuthGuard)
@@ -46,5 +51,12 @@ export class MemberRequestController {
     const command = new DeleteRequestCommand();
     command.id = id;
     return this.commandBus.execute(command);
+  }
+
+  //find request by id
+  @ApiOperation({ summary: 'Get user by id' })
+  @Post('getById')
+  findRequest(@Query() query: FindMemberQuery) {
+    return this.queryBus.execute(query);
   }
 }
