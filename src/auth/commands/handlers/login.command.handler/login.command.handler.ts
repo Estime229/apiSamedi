@@ -69,6 +69,7 @@ export class LoginCommandHandler implements ICommandHandler<LoginCommand> {
       });
 
       // Ne retournez jamais le mot de passe
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       const { password, ...userWithoutPassword } = existingUser;
 
       return {

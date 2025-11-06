@@ -21,12 +21,15 @@ import { MemberRequestModule } from './member-request/member-request.module';
 import { MemberModel } from './member-request/models/member.model/member.model';
 import { FileModule } from './file/file.module';
 import { GeneratorModule } from './generator/generator.module';
+import { MailModule } from './mail/mail.module';
+import { HealthModule } from './health/health.module';
+import { HealthController } from './health/health.controller';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       load: [configuration],
-      isGlobal: true, // Pour rendre le ConfigService disponible partout
+      isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -37,6 +40,8 @@ import { GeneratorModule } from './generator/generator.module';
         username: configService.get('database.username'),
         password: configService.get('database.password'),
         database: configService.get('database.database'),
+
+        // Configuration SSL optimisée pour Render
         ssl:
           process.env.NODE_ENV === 'production' ||
           process.env.RENDER ||
@@ -46,6 +51,21 @@ import { GeneratorModule } from './generator/generator.module';
                 rejectUnauthorized: configService.get('ssl.rejectUnauthorized'),
               }
             : undefined,
+
+        // NOUVEAU : Configuration pour gérer les cold starts
+        retryAttempts: 15, // Plus de tentatives
+        retryDelay: 5000, // 5 secondes entre chaque tentative
+        connectTimeoutMS: 60000, // 60 secondes timeout
+
+        // NOUVEAU : Pool de connexions optimisé
+        extra: {
+          max: 10, // Maximum 10 connexions
+          min: 2, // Minimum 2 connexions
+          idleTimeoutMillis: 30000, // 30 secondes avant de fermer une connexion inactive
+          connectionTimeoutMillis: 60000, // 60 secondes pour établir une connexion
+          statement_timeout: 60000, // 60 secondes timeout pour les requêtes
+        },
+
         entities: [
           UserModel,
           PostModel,
@@ -54,10 +74,10 @@ import { GeneratorModule } from './generator/generator.module';
           FollowModel,
           GroupModel,
           MemberModel,
-        ], // Spécifier explicitement les entités
+        ],
         synchronize: configService.get('database.synchronize'),
         logging: configService.get('database.logging'),
-        migrations: ['dist/migrations/*.js'], // Configuration des migrations
+        migrations: ['dist/migrations/*.js'],
         migrationsRun: false,
         migrationsTableName: 'migrations',
       }),
@@ -73,8 +93,10 @@ import { GeneratorModule } from './generator/generator.module';
     MemberRequestModule,
     FileModule,
     GeneratorModule,
+    MailModule,
+    HealthModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, HealthController],
   providers: [AppService],
 })
 export class AppModule {}

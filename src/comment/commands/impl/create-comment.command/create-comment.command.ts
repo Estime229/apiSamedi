@@ -10,12 +10,6 @@ export class CreateCommentCommand {
   @IsNotEmpty()
   content: string;
 
-  @ApiProperty({
-    description: 'You userId',
-    format: 'string',
-    example: 'uuid',
-  })
-  @IsNotEmpty()
   userId: string;
 
   @ApiProperty({

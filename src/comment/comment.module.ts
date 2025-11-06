@@ -5,6 +5,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from '../config/configuration';
 import { CommentModel } from './models/comment.model/comment.model';
+import { ModerationModule } from '../moderation/moderation.module';
 import { CreateCommentCommandHandler } from './commands/handlers/create-comment.command.handler/create-comment.command.handler';
 import { UpdateCommentCommandHandler } from './commands/handlers/update-comment.command.handler/update-comment.command.handler';
 import { DeleteCommentCommandHandler } from './commands/handlers/delete-comment.command.handler/delete-comment.command.handler';
@@ -14,6 +15,8 @@ import { GetAllCommentHandler } from './queries/handlers/get-all-comment.handler
   imports: [
     CqrsModule,
     TypeOrmModule.forFeature([CommentModel]), // Initialise JWT module
+    // Moderation module provides moderation service
+    ModerationModule,
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,

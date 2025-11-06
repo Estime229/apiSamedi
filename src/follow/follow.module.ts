@@ -7,6 +7,7 @@ import configuration from '../config/configuration';
 import { FollowModel } from './models/follow.model/follow.model';
 import { FollowMeCommandHandler } from './commands/handlers/follow-me.command.handler/follow-me.command.handler';
 import { UnfollowCommandHandler } from './commands/handlers/unfollow.command.handler/unfollow.command.handler';
+import { FindFollowerHandler } from './queries/handlers/find-follower.handler/find-follower.handler';
 
 @Module({
   imports: [
@@ -18,6 +19,10 @@ import { UnfollowCommandHandler } from './commands/handlers/unfollow.command.han
     }),
   ],
   controllers: [FollowController],
-  providers: [FollowMeCommandHandler, UnfollowCommandHandler],
+  providers: [
+    FollowMeCommandHandler,
+    UnfollowCommandHandler,
+    FindFollowerHandler,
+  ],
 })
 export class FollowModule {}

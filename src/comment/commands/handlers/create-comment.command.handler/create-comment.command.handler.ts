@@ -1,6 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateCommentCommand } from '../../impl/create-comment.command/create-comment.command';
 import { DataSource } from 'typeorm';
+import { ModerationService } from '../../../../moderation/moderation.service';
 import { CommentModel } from '../../../models/comment.model/comment.model';
 import { UserModel } from '../../../../auth/models/user.model/user.model';
 import { NotFoundException } from '@nestjs/common';
@@ -17,10 +18,13 @@ export class CreateCommentCommandHandler
    * 3 - Create the comment
    */
 
-  constructor(private readonly dataSource: DataSource) {}
+  constructor(
+    private readonly dataSource: DataSource,
+    private readonly moderationService: ModerationService,
+  ) {}
 
   async execute(command: CreateCommentCommand): Promise<any> {
-    const { postId, userId, content } = command;
+    const { postId, content, userId } = command;
 
     try {
       let comment = await this.dataSource
@@ -31,15 +35,6 @@ export class CreateCommentCommandHandler
       comment = new CommentModel();
       comment.content = content;
 
-      //verify user
-      const user = await this.dataSource
-        .getRepository(UserModel)
-        .findOne({ where: { id: userId } });
-      if (!user) {
-        throw new NotFoundException('User not found');
-      }
-      comment.user = user;
-
       // verify if post exist
       const post = await this.dataSource
         .getRepository(PostModel)
@@ -49,10 +44,32 @@ export class CreateCommentCommandHandler
       }
       comment.post = post;
 
+      //check user && save user
+      const user = await this.dataSource
+        .getRepository(UserModel)
+        .findOne({ where: { id: userId } });
+
+      comment.user = user;
+
       // save comment
       const savedComment = await this.dataSource
         .getRepository(CommentModel)
         .save(comment);
+
+      // Fire-and-forget moderation scan to avoid blocking request path.
+      // If high severity, ModerationService will ban the user.
+      setImmediate(() => {
+        try {
+          this.moderationService.scanAndEnforce({
+            text: savedComment.content,
+            userId: user?.id,
+            postId: post?.id,
+          });
+        } catch (e) {
+          // Do not crash main flow on moderation errors
+          console.error('Moderation background error:', e?.message || e);
+        }
+      });
 
       return {
         data: savedComment,

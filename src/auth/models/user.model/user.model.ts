@@ -85,4 +85,22 @@ export class UserModel {
     onDelete: 'CASCADE',
   })
   members: MemberModel[];
+
+  @Column({
+    nullable: false,
+    default: false,
+  })
+  banned: boolean;
+
+  @Column({
+    type: 'text',
+    nullable: true,
+  })
+  banReason: string;
+
+  @Column({
+    nullable: true,
+    type: 'timestamptz',
+  })
+  bannedAt: Date;
 }
