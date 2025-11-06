@@ -2,7 +2,7 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { FindFollowerQuery } from '../../impl/find-follower.query/find-follower.query';
 import { DataSource } from 'typeorm';
 import { NotFoundException } from '@nestjs/common';
-import { FollowModel } from 'src/follow/models/follow.model/follow.model';
+import { FollowModel } from '../../../models/follow.model/follow.model';
 
 @QueryHandler(FindFollowerQuery)
 export class FindFollowerHandler implements IQueryHandler<FindFollowerQuery> {
